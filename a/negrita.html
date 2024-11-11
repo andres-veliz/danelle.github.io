@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>para danella:p</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+        footer {
+            font-size: 20px;
+        }
+        
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(to bottom, #ffefba, #ffffff);
+            }
+            50% {
+                background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            }
+            100% {
+                background: linear-gradient(to bottom, #a18cd1, #fbc2eb);
+            }
+        }
+
+        h1 {
+            color: #e63946;
+            font-size: 2.5em;
+            margin-top: 50px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .heart, .balloon {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            animation: rise 6s infinite ease-in;
+            opacity: 0.8;
+        }
+
+        .big-heart {
+            font-size: 5em;
+            position: relative;
+            margin: 20px auto;
+            animation: scale 1s infinite alternate;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>¡Felicidades, Negrita!</h1>
+    <h1>HOLAS DANELLE</h1>
+    <p>Quiero felicitarte de todo corazón. Es un logro impresionante y estoy muy orgulloso de ti. Tu dedicación y esfuerzo y todas las desveladas valieron la pena. Aunque ha pasado un tiempo desde que hablamos, quiero que sepas que siempre he creído en ti y creo que vas a llegar demasiado lejos, tqm negrita.</p>
+
+    <div class="big-heart">❤️</div> 
+    
+    <div id="animation-elements"></div>
+
+    <script>
+        const animationContainer = document.getElementById('animation-elements');
+
+        function createAnimationElement(type) {
+            const element = document.createElement('div');
+            element.className = type;
+            element.innerHTML = type === 'heart' ? '❤️' : '🎈';
+            element.style.left = Math.random() * 100 + 'vw'; 
+            element.style.animationDuration = (Math.random() * 2 + 3) + 's'; 
+            element.style.fontSize = (Math.random() * 1 + 1.5) + 'em'; 
+            animationContainer.appendChild(element);
+
+
+            element.addEventListener('animationend', () => {
+                element.remove();
+            });
+        }
+
+
+        for (let i = 0; i < 50; i++) {
+            createAnimationElement(i % 2 === 0 ? 'heart' : 'balloon');
+        }
+
+        setInterval(() => createAnimationElement(Math.random() > 0.5 ? 'heart' : 'balloon'), 300); 
+    </script>
+    <footer>tengo sueño .----. </footer>
+</body>
+</html>
